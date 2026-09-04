@@ -1,8 +1,14 @@
 import os
+import sys
 import json
 import argparse
 from pathlib import Path
 from typing import TypedDict, List, Dict, Optional, Annotated
+
+# Make the project root importable regardless of how this script is invoked
+# (e.g. `python agents/eval.py` sets sys.path[0] to agents/, not the project
+# root, so helper/ and tools/ wouldn't otherwise be found).
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
 # LangChain and LangGraph imports
 from langchain_core.messages import HumanMessage, SystemMessage, AIMessage
@@ -18,7 +24,7 @@ from dotenv import load_dotenv
 import traceback
 import time
 
-from helper.connections import connect_to_vllm
+from helper.connections import get_llm
 
 # --- 1. Constants and Setup ---
 MAX_CYCLES = 15
@@ -66,7 +72,7 @@ class EvaluationState(TypedDict):
     hard_fail: Optional[bool]   # <-- NEW: route to failure if generator fails 3 times
 
 # --- 4. Agent and Node Definitions ---
-llm = connect_to_vllm()
+llm = get_llm()
 structured_llm_query = llm.with_structured_output(SparqlQuery)
 
 # MODIFIED: query_generator_node now hard-fails after 3 exceptions (any exception)

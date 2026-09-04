@@ -1,6 +1,12 @@
 import os
+import sys
 from pathlib import Path
 from typing import TypedDict, Annotated
+
+# Make the project root importable regardless of how this script is invoked
+# (e.g. `python agents/ontology_fixer.py` sets sys.path[0] to agents/, not
+# the project root, so helper/ and tools/ wouldn't otherwise be found).
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
 # RDF and OWL libraries for verification
 import rdflib
@@ -10,6 +16,7 @@ from owlready2 import *
 from langchain_core.messages import HumanMessage, SystemMessage
 from langchain_core.tools import tool
 from langchain_openai import ChatOpenAI
+from helper.connections import get_llm
 from langgraph.graph import StateGraph, END
 from langgraph.prebuilt import ToolNode, tools_condition
 from dotenv import load_dotenv
@@ -245,11 +252,8 @@ if __name__ == "__main__":
     ontology_file_path = ONTOLOGY_DIR / file_to_fix
 
     # LLM Setup
-    print("\nConnecting to local vLLM server...")
-    model_name = os.getenv("MODEL_NAME", "Qwen/Qwen3-30B-A3B-Instruct-2507-FP8")
-    llm = ChatOpenAI(model=model_name, base_url="http://localhost:8000/v1", api_key="not-needed", temperature=0)
+    llm = get_llm(temperature=0)
     llm_with_tools = llm.bind_tools([read_lines_from_file, write_file_with_range])
-    print("✅ Successfully connected to vLLM.")
 
     # Graph Construction
     builder = StateGraph(FixerState)

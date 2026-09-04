@@ -1,5 +1,13 @@
 import argparse
 import json
+import sys
+from pathlib import Path
+
+# Make the project root importable regardless of how this script is invoked
+# (e.g. `python agents/vector_eval.py` sets sys.path[0] to agents/, not the
+# project root, so rag_eval/ wouldn't otherwise be found).
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
+
 from rag_eval.evaluate_mine import *
 from dotenv import load_dotenv
 from concurrent.futures import ThreadPoolExecutor, as_completed
@@ -181,8 +189,9 @@ if __name__ == "__main__":
     parser.add_argument("--output-file", type=str, required=True, help="Path to save the resulting evaluation JSON.")
     parser.add_argument("--contract-name", type=str, default="Equivita Synthetic Life Insurance",
                         help="Name of the contract being evaluated.")
-    parser.add_argument("--llm-model", type=str, default="Qwen/Qwen3-30B-A3B-Instruct-2507-FP8",
-                        help="LLM used for DSPy evaluation.")
+    parser.add_argument("--llm-model", type=str, default="qwen2.5:32b-instruct",
+                        help="Label for the local Ollama model used for DSPy evaluation "
+                             "(the actual model is set via configure_dspy()/OLLAMA_MODEL).")
     parser.add_argument("--embedding-model", type=str, default="all-MiniLM-L6-v2",
                         help="SentenceTransformer model for node embeddings.")
 

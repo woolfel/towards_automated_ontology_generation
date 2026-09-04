@@ -1,7 +1,13 @@
 import os
+import sys
 import json
 from pathlib import Path
 from typing import TypedDict, List, Dict, Optional, Annotated
+
+# Make the project root importable regardless of how this script is invoked
+# (e.g. `python agents/multi_agent.py` sets sys.path[0] to agents/, not the
+# project root, so helper/ and tools/ wouldn't otherwise be found).
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
 # PDF
 import fitz
@@ -10,6 +16,7 @@ import fitz
 from langchain_core.messages import HumanMessage, SystemMessage, BaseMessage
 from langchain_core.output_parsers import PydanticOutputParser
 from langchain_openai import ChatOpenAI
+from helper.connections import get_llm
 from langgraph.graph import StateGraph, END
 from langgraph.prebuilt import ToolNode, tools_condition
 from langgraph.checkpoint.memory import MemorySaver
@@ -32,18 +39,11 @@ PROJECT_ROOT = Path(__file__).resolve().parent.parent
 ONTOLOGY_DIR = PROJECT_ROOT / "ontology"
 ONTOLOGY_DIR.mkdir(exist_ok=True)
 
-MODEL_NAME = os.getenv("MODEL_NAME", "Qwen/Qwen2-72B-Instruct")
 MAX_QA_CYCLES = 20
 MAX_SYNTAX_CHECKS = 20
 
-# Shared LLM
-llm = ChatOpenAI(
-    model=MODEL_NAME,
-    base_url="http://localhost:8000/v1",
-    api_key="not-needed",
-    temperature=0.0,
-    max_tokens=4096,
-)
+# Shared LLM (local Ollama server -- see helper/connections.py)
+llm = get_llm(temperature=0.0, max_tokens=4096)
 
 # --------------------------
 # Reducer for role-scoped memory

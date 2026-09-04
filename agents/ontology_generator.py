@@ -1,7 +1,13 @@
 import os
+import sys
 import json
 from pathlib import Path
 from typing import TypedDict, List, Dict, Annotated
+
+# Make the project root importable regardless of how this script is invoked
+# (e.g. `python agents/ontology_generator.py` sets sys.path[0] to agents/,
+# not the project root, so helper/ and tools/ wouldn't otherwise be found).
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
 # PyMuPDF for reading contract files
 import fitz 
@@ -9,8 +15,9 @@ import fitz
 # LangChain and LangGraph imports
 from langchain_core.messages import BaseMessage, HumanMessage, ToolMessage
 from langchain_core.tools import tool
-# Using ChatOpenAI to connect to the vLLM server
+# Using ChatOpenAI (via helper.connections.get_llm) to connect to a local Ollama server
 from langchain_openai import ChatOpenAI
+from helper.connections import get_llm
 from langgraph.graph import StateGraph, END
 from langgraph.prebuilt import ToolNode, tools_condition
 from langgraph.graph.message import add_messages
@@ -67,18 +74,8 @@ class OntologyEditorAgent:
 
 # --- 5. Main Execution Logic ---
 if __name__ == "__main__":
-    # --- Model Setup (Unchanged) ---
-    print("Connecting to the local vLLM server...")
-    model_name = os.getenv("MODEL_NAME", "Qwen/Qwen3-30B-A3B-Instruct-2507-FP8")
-    
-    llm = ChatOpenAI(
-        model=model_name,
-        base_url="http://localhost:8000/v1",
-        api_key="not-needed",
-        temperature=0,
-        max_tokens=4096,
-    )
-    print("✅ Successfully connected to vLLM.")
+    # --- Model Setup ---
+    llm = get_llm(temperature=0, max_tokens=4096)
 
     # --- ⬇️ 1. Specify Your Input Files Directly Here ⬇️ ---
     # These paths should point to the files for the SINGLE contract you want to process.

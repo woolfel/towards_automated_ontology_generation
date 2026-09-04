@@ -46,6 +46,8 @@ Based on the provided architecture, the codebase is organized as follows:
 
 * `helper/`: Utility scripts (e.g., LLM connections, tool call counting).
 
+* `models/`: Pydantic schemas shared across the agents (e.g. `competency_questions.py` defines the `CompetencyQuestion`/`CQList` structured-output schema used by `cq_generator.py`).
+
 * `ontology/`: Output directory for the generated Turtle (`.ttl`) files.
 
 * `rag_eval/`: Core logic for the semantic retrieval and evaluation nodes.
@@ -56,24 +58,42 @@ Based on the provided architecture, the codebase is organized as follows:
 
 ## Setup and Prerequisites
 
-1. **Python Environment**
-   Ensure you have Python 3.10+ installed.
-
-2. **Dependencies**
-   Install the required libraries (e.g., `langchain`, `langgraph`, `rdflib`, `owlready2`, `pymupdf`, `sentence-transformers`, `dspy`).
-
-3. **LLM Server**
-   The agents are configured to connect to a local vLLM server via the OpenAI API specification. Ensure your vLLM server is running on:
-
-   ```
-   http://localhost:8000/v1
-   ```
-
-4. **Environment Variables**
-   Create a `.env` file in the root directory to specify your model:
+1. **Create the conda environment**
+   Requires [Miniconda](https://docs.conda.io/en/latest/miniconda.html) or Anaconda. This creates an environment named `ontology-gen` with Python 3.12 and every dependency the code imports (LangChain/LangGraph, rdflib, owlready2, pymupdf, sentence-transformers, dspy, etc.):
 
    ```bash
-   MODEL_NAME="Qwen/Qwen3-30B-A3B-Instruct-2507-FP8"
+   conda env create -f environment.yml
+   conda activate ontology-gen
+   ```
+
+   Prefer plain `pip`/`venv` instead? `requirements.txt` has the same pinned versions:
+
+   ```bash
+   python3.12 -m venv .venv
+   source .venv/bin/activate
+   pip install -r requirements.txt
+   ```
+
+2. **Install and start Ollama (local LLM server)**
+   The agents connect to a local [Ollama](https://ollama.com/download) server through its OpenAI-compatible API rather than vLLM -- Ollama installs in one step and uses Apple Silicon (Metal) or NVIDIA (CUDA) acceleration automatically, so it works out of the box on a Mac.
+
+   ```bash
+   # Install Ollama, then pull a model (pick a size that fits your machine):
+   ollama pull qwen2.5:32b-instruct     # ~20GB, needs a beefy machine
+   # ollama pull qwen2.5:14b-instruct   # smaller/faster alternative
+   ```
+
+   Ollama serves its OpenAI-compatible API at `http://localhost:11434/v1` automatically once installed (start it manually with `ollama serve` if it isn't already running). All LLM connections in this repo go through `helper/connections.py`'s `get_llm()`, so this is the only place the endpoint/model is configured.
+
+3. **Environment Variables**
+   Copy `.env.example` to `.env` and set the model tag to match what you pulled:
+
+   ```bash
+   cp .env.example .env
+   ```
+
+   ```bash
+   OLLAMA_MODEL="qwen2.5:32b-instruct"
    ```
 
 ---

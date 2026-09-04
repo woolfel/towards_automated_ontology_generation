@@ -1,0 +1,58 @@
+# Core dependencies for towards_automated_ontology_generation
+#
+# Install with:
+#   pip install -r requirements.txt
+#
+# Or use environment.yml to create a dedicated conda/miniconda environment
+# (recommended - see README.md).
+#
+# Versions below were verified together against this codebase's imports
+# on 2026-08-25 (Python 3.12).
+
+# --- LLM orchestration (LangChain / LangGraph) ---
+langchain-core==1.6.0
+langchain-openai==1.6.0
+langgraph==1.2.11
+
+# --- Local LLM client ---
+# The project talks to a local Ollama server through its OpenAI-compatible
+# API, via langchain-openai's ChatOpenAI client (see helper/connections.py).
+# Pinned to a 2.x release: langchain-openai 1.6.0 needs openai>=2.45.0,<4.0.0
+# and litellm 1.98.0 (pulled in by dspy) needs openai>=2.20.0,<3.0.0 -- 2.54.0
+# is the newest version satisfying both.
+openai==2.54.0
+
+# --- Data validation / config ---
+pydantic==2.13.4
+python-dotenv==1.2.3
+
+# --- Ontology / RDF / OWL ---
+rdflib==7.6.0
+owlready2==0.51
+owlrl==7.6.2
+
+# --- PDF parsing ---
+pymupdf==1.28.2
+
+# --- Vector / RAG evaluation ---
+sentence-transformers==6.0.0
+rank-bm25==0.2.2
+scikit-learn==1.9.0
+
+# --- DSPy-based evaluation pipeline ---
+dspy==3.3.1
+# dspy depends on litellm (unpinned upstream). Recent litellm releases ship a
+# Rust extension (litellm-rust) with no prebuilt wheel for every platform yet;
+# if pip can't find a matching wheel it falls back to compiling from source,
+# which needs a newer Cargo (edition2024) than ships with most systems -- you'll
+# see a "maturin failed" / "feature edition2024 is required" error otherwise.
+# Pinning to a version confirmed to ship prebuilt wheels for macOS
+# (Intel + Apple Silicon), Linux and Windows avoids that build entirely.
+litellm==1.98.0
+
+# --- Inter-rater agreement / graph utilities ---
+krippendorff==0.8.2
+networkx==3.6.1
+
+# --- Numerics (pulled in by several of the above, pinned for reproducibility) ---
+numpy==2.5.2

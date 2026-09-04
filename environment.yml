@@ -1,0 +1,18 @@
+# Miniconda/conda environment for towards_automated_ontology_generation
+#
+# Create it with:
+#   conda env create -f environment.yml
+#
+# Activate it with:
+#   conda activate ontology-gen
+#
+# Update it later (after editing this file or requirements.txt) with:
+#   conda env update -f environment.yml --prune
+name: ontology-gen
+channels:
+  - conda-forge
+dependencies:
+  - python=3.12
+  - pip>=24
+  - pip:
+      - -r requirements.txt

@@ -1,12 +1,18 @@
 import os
+import sys
 import json
-import fitz  # PyMuPDF
+import pymupdf as fitz
 from typing import List
 from pathlib import Path
 
+# Make the project root importable regardless of how this script is invoked
+# (e.g. `python agents/cq_generator.py` sets sys.path[0] to agents/, not the
+# project root, so models/, helper/, and tools/ wouldn't otherwise be found).
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
+
 # LangChain and Pydantic imports
 from langchain_core.prompts import PromptTemplate
-from langchain_core.schema import HumanMessage
+from langchain_core.messages import HumanMessage
 from pydantic import BaseModel, Field, ValidationError
 from dotenv import load_dotenv
 
@@ -16,8 +22,7 @@ load_dotenv()
 # ---- 1. Define Pydantic schema for structured output ----
 from models.competency_questions import CompetencyQuestion, CQList
 
-from helper.connections import get_vllm_llm
-
+from helper.connections import get_llm
 
 # ---- 3. Prompt Template ----
 def get_prompt_template():
@@ -110,7 +115,10 @@ def generate_cqs_for_contract(contract_path: str, output_json: str, structured_l
         )
         try:
             cq_list_object = structured_llm.invoke([message])
-            result_dict = cq_list_object.model_dump()
+            # exclude_none keeps saved CQs in the same shape as the historical
+            # data in cqs/generated/ when the optional key_entities/odp_hint
+            # fields aren't populated by the model (see models/competency_questions.py)
+            result_dict = cq_list_object.model_dump(exclude_none=True)
             all_results[contract_id][str(page_number)] = result_dict['questions']
             print(f"  ✔ Successfully parsed page {page_number} with {len(result_dict.get('questions', []))} CQs.")
         except ValidationError as ve:
@@ -141,7 +149,7 @@ if __name__ == "__main__":
         print("Please ensure the 'contracts' folder exists in your project root.")
     else:
         # --- Initialization ---
-        llm = get_vllm_llm()
+        llm = get_llm()
         structured_chat_llm = llm.with_structured_output(
             schema=CQList,
             method="json_mode"

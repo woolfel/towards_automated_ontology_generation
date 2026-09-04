@@ -1,0 +1,665 @@
+{
+    "sen": {
+        "1": [
+            {
+                "competency_question": "What is the name of the event when a policy's coverage terminates at the end of its term?",
+                "expected_answer": "Coverage Termination",
+                "key_entities": [
+                    "Coverage",
+                    "Term"
+                ],
+                "odp_hint": "Event Reification"
+            },
+            {
+                "competency_question": "Who is the agent participant in a 'Coverage Termination' event?",
+                "expected_answer": "the Policy Owner",
+                "key_entities": [
+                    "Policy Owner",
+                    "Coverage Termination"
+                ],
+                "odp_hint": "Participation"
+            },
+            {
+                "competency_question": "What is the object participant in a 'Coverage Termination' event?",
+                "expected_answer": "the Policy",
+                "key_entities": [
+                    "Policy",
+                    "Coverage Termination"
+                ],
+                "odp_hint": "Participation"
+            },
+            {
+                "competency_question": "What is the numeric value of the death benefit?",
+                "expected_answer": "500,000",
+                "key_entities": [
+                    "Death Benefit"
+                ],
+                "odp_hint": "Quantity"
+            },
+            {
+                "competency_question": "What is the currency unit of the death benefit?",
+                "expected_answer": "USD",
+                "key_entities": [
+                    "Death Benefit"
+                ],
+                "odp_hint": "Quantity"
+            },
+            {
+                "competency_question": "What is the duration of the reinstatement period?",
+                "expected_answer": "5 Years",
+                "key_entities": [
+                    "Reinstatement Period"
+                ],
+                "odp_hint": "Time Interval"
+            },
+            {
+                "competency_question": "What event marks the beginning of the reinstatement period interval?",
+                "expected_answer": "the date of lapse",
+                "key_entities": [
+                    "Lapse",
+                    "Reinstatement Period"
+                ],
+                "odp_hint": "Time Interval"
+            }
+        ],
+        "3": [
+            {
+                "competency_question": "What constitutes the entire contract between the Policy Owner and the Company?",
+                "expected_answer": "This policy, together with the application and any attached riders or endorsements",
+                "key_entities": [
+                    "Policy",
+                    "Application",
+                    "Riders",
+                    "Endorsements"
+                ]
+            },
+            {
+                "competency_question": "Who can alter or waive any provision of this policy?",
+                "expected_answer": "an officer of the Company",
+                "key_entities": [
+                    "Company Officer"
+                ],
+                "odp_hint": "Participation"
+            },
+            {
+                "competency_question": "What event causes a transition from the 'Active' state to the 'In Grace Period' state?",
+                "expected_answer": "a missed premium payment",
+                "key_entities": [
+                    "Missed Premium Payment",
+                    "Grace Period"
+                ],
+                "odp_hint": "Situation"
+            },
+            {
+                "competency_question": "What is the maximum duration a policy can be in the 'In Grace Period' state?",
+                "expected_answer": "31 days",
+                "key_entities": [
+                    "Grace Period Duration"
+                ],
+                "odp_hint": "Time Interval"
+            },
+            {
+                "competency_question": "What event marks the beginning of the reinstatement period interval?",
+                "expected_answer": "the date of lapse",
+                "key_entities": [
+                    "Reinstatement Period",
+                    "Date of Lapse"
+                ],
+                "odp_hint": "Time Interval"
+            },
+            {
+                "competency_question": "What is the duration of the reinstatement period?",
+                "expected_answer": "5 years",
+                "key_entities": [
+                    "Reinstatement Period Duration"
+                ],
+                "odp_hint": "Time Interval"
+            },
+            {
+                "competency_question": "Who possesses all contractual rights, including the right to change beneficiaries and assign the policy?",
+                "expected_answer": "The Policy Owner",
+                "key_entities": [
+                    "Policy Owner",
+                    "Contractual Rights"
+                ]
+            },
+            {
+                "competency_question": "What is the numeric value of the death benefit?",
+                "expected_answer": "500000",
+                "key_entities": [
+                    "Death Benefit Value"
+                ],
+                "odp_hint": "Quantity"
+            },
+            {
+                "competency_question": "What is the currency unit of the death benefit?",
+                "expected_answer": "USD",
+                "key_entities": [
+                    "Death Benefit Currency Unit"
+                ],
+                "odp_hint": "Quantity"
+            }
+        ],
+        "4": [
+            {
+                "competency_question": "What is the name of the event when a policy becomes incontestable?",
+                "expected_answer": "the policy shall be incontestable after it has been in force during the lifetime of the Insured for two years from the Effective Date.",
+                "key_entities": [
+                    "Incontestability",
+                    "Effective Date"
+                ],
+                "odp_hint": "Event Reification"
+            },
+            {
+                "competency_question": "What event marks the beginning of the grace period interval?",
+                "expected_answer": "the due date of each premium after the first",
+                "key_entities": [
+                    "Grace Period",
+                    "Premium Due Date"
+                ],
+                "odp_hint": "Time Interval"
+            },
+            {
+                "competency_question": "What is the maximum duration a policy can be in the 'In Grace Period' state?",
+                "expected_answer": "31 days",
+                "key_entities": [
+                    "Grace Period Duration"
+                ],
+                "odp_hint": "Situation"
+            },
+            {
+                "competency_question": "What state does the policy enter if a premium is not paid by the end of the Grace Period?",
+                "expected_answer": "Lapsed",
+                "key_entities": [
+                    "Policy Lapse",
+                    "Grace Period End"
+                ],
+                "odp_hint": "Situation"
+            },
+            {
+                "competency_question": "What event causes a transition from the 'Active' state to the 'In Grace Period' state?",
+                "expected_answer": "a missed premium payment",
+                "key_entities": [
+                    "Premium Payment",
+                    "Grace Period Start"
+                ],
+                "odp_hint": "Situation"
+            },
+            {
+                "competency_question": "What is the duration of the reinstatement period?",
+                "expected_answer": "5 years",
+                "key_entities": [
+                    "Reinstatement Period Duration"
+                ],
+                "odp_hint": "Time Interval"
+            }
+        ],
+        "5": [
+            {
+                "competency_question": "What is the name of the event when a lapsed policy may be reinstated?",
+                "expected_answer": "Reinstatement",
+                "key_entities": [
+                    "Policy",
+                    "Event"
+                ],
+                "odp_hint": "Event Reification"
+            },
+            {
+                "competency_question": "Who is the agent participant in a 'Reinstatement' event?",
+                "expected_answer": "the Policy Owner",
+                "key_entities": [
+                    "Agent",
+                    "Event"
+                ],
+                "odp_hint": "Participation"
+            },
+            {
+                "competency_question": "What is the object participant in a 'Reinstatement' event?",
+                "expected_answer": "the Lapsed Policy",
+                "key_entities": [
+                    "Object",
+                    "Event"
+                ],
+                "odp_hint": "Participation"
+            },
+            {
+                "competency_question": "What is the duration of the reinstatement period?",
+                "expected_answer": "5 years",
+                "key_entities": [
+                    "Time Interval",
+                    "Reinstatement"
+                ],
+                "odp_hint": "Time Interval"
+            },
+            {
+                "competency_question": "What event marks the beginning of the reinstatement period interval?",
+                "expected_answer": "the date of lapse",
+                "key_entities": [
+                    "Event",
+                    "Time Interval"
+                ],
+                "odp_hint": "Time Interval"
+            },
+            {
+                "competency_question": "What is the numeric value of the first premium due on the Effective Date?",
+                "expected_answer": "The amount shown in the Schedule of Benefits",
+                "key_entities": [
+                    "Premium Amount",
+                    "Quantity"
+                ],
+                "odp_hint": "Quantity"
+            },
+            {
+                "competency_question": "What is the currency unit of the first premium?",
+                "expected_answer": "Not specified, but typically USD based on context",
+                "key_entities": [
+                    "Currency Unit",
+                    "Quantity"
+                ],
+                "odp_hint": "Quantity"
+            },
+            {
+                "competency_question": "What event causes a transition from the 'Active' state to the 'In Grace Period' state?",
+                "expected_answer": "a missed premium payment",
+                "key_entities": [
+                    "Event",
+                    "Situation"
+                ],
+                "odp_hint": "Situation"
+            },
+            {
+                "competency_question": "What is the maximum duration a policy can be in the 'In Grace Period' state?",
+                "expected_answer": "31 days",
+                "key_entities": [
+                    "Time Interval",
+                    "Grace Period"
+                ],
+                "odp_hint": "Time Interval"
+            },
+            {
+                "competency_question": "What state does the policy enter if a premium is not paid by the end of the Grace Period?",
+                "expected_answer": "Lapsed",
+                "key_entities": [
+                    "State",
+                    "Situation"
+                ],
+                "odp_hint": "Situation"
+            }
+        ],
+        "6": [
+            {
+                "competency_question": "What is the name of the event when a Death Benefit is paid?",
+                "expected_answer": "Death Benefit Payment",
+                "key_entities": [
+                    "Death Benefit",
+                    "Payment"
+                ],
+                "odp_hint": "Event Reification"
+            },
+            {
+                "competency_question": "Who is the agent participant in a 'Death Benefit Payment' event?",
+                "expected_answer": "the Company",
+                "key_entities": [
+                    "Company",
+                    "Death Benefit Payment"
+                ],
+                "odp_hint": "Participation"
+            },
+            {
+                "competency_question": "What is the object participant in a 'Death Benefit Payment' event?",
+                "expected_answer": "the Death Benefit to the designated Beneficiary",
+                "key_entities": [
+                    "Beneficiary",
+                    "Death Benefit Payment"
+                ],
+                "odp_hint": "Participation"
+            },
+            {
+                "competency_question": "What is the numeric value of the death benefit?",
+                "expected_answer": "",
+                "key_entities": [
+                    "Death Benefit"
+                ],
+                "odp_hint": "Quantity"
+            },
+            {
+                "competency_question": "What is the currency unit of the death benefit?",
+                "expected_answer": "",
+                "key_entities": [
+                    "Death Benefit"
+                ],
+                "odp_hint": "Quantity"
+            },
+            {
+                "competency_question": "What event marks the beginning of the proof requirement interval for 'Proof of Death'?",
+                "expected_answer": "the Insured\u2019s death",
+                "key_entities": [
+                    "Insured",
+                    "Proof of Death"
+                ],
+                "odp_hint": "Time Interval"
+            },
+            {
+                "competency_question": "What is the duration of the time interval from receipt of proof to payment?",
+                "expected_answer": "",
+                "key_entities": [
+                    "Payment",
+                    "Proof of Death"
+                ],
+                "odp_hint": "Time Interval"
+            },
+            {
+                "competency_question": "Who is designated as the Beneficiary in the event no other Beneficiary survives the Insured?",
+                "expected_answer": "the Policy Owner, if living, or to the Owner\u2019s estate",
+                "key_entities": [
+                    "Beneficiary",
+                    "Policy Owner"
+                ],
+                "odp_hint": "Situation"
+            }
+        ],
+        "7": [
+            {
+                "competency_question": "What is the name of the event when a Beneficiary designation change request is submitted?",
+                "expected_answer": "Change of Beneficiary Request",
+                "key_entities": [
+                    "Policy Owner",
+                    "Beneficiary"
+                ],
+                "odp_hint": "Event Reification"
+            },
+            {
+                "competency_question": "Who is the agent participant in a 'Change of Beneficiary Request' event?",
+                "expected_answer": "the Policy Owner",
+                "key_entities": [
+                    "Policy Owner"
+                ],
+                "odp_hint": "Participation"
+            },
+            {
+                "competency_question": "What is the object participant in a 'Change of Beneficiary Request' event?",
+                "expected_answer": "Beneficiary designation change request",
+                "key_entities": [
+                    "Beneficiary"
+                ],
+                "odp_hint": "Participation"
+            },
+            {
+                "competency_question": "What is the required manner for initiating a 'Change of Beneficiary Request' event?",
+                "expected_answer": "written request to the Company",
+                "key_entities": [],
+                "odp_hint": "Participation"
+            },
+            {
+                "competency_question": "When does the change in Beneficiary designation take effect after submission?",
+                "expected_answer": "as of the date the request is signed",
+                "key_entities": [
+                    "date",
+                    "request"
+                ],
+                "odp_hint": "Time Instant"
+            },
+            {
+                "competency_question": "What event causes a transition from 'Policy Owner' to 'Assignee' state?",
+                "expected_answer": "submitting a written assignment acceptable to the Company",
+                "key_entities": [
+                    "Assignment",
+                    "Company"
+                ],
+                "odp_hint": "Situation"
+            },
+            {
+                "competency_question": "What is the name of the event when a Policy Owner cancels the policy?",
+                "expected_answer": "Cancellation Request",
+                "key_entities": [
+                    "Policy Owner",
+                    "policy"
+                ],
+                "odp_hint": "Event Reification"
+            },
+            {
+                "competency_question": "Who is the agent participant in a 'Cancellation Request' event?",
+                "expected_answer": "the Policy Owner",
+                "key_entities": [
+                    "Policy Owner"
+                ],
+                "odp_hint": "Participation"
+            },
+            {
+                "competency_question": "What is the object participant in a 'Cancellation Request' event?",
+                "expected_answer": "policy cancellation request",
+                "key_entities": [],
+                "odp_hint": "Participation"
+            },
+            {
+                "competency_question": "What is the required manner for initiating a 'Cancellation Request' event?",
+                "expected_answer": "submitting a written request",
+                "key_entities": [],
+                "odp_hint": "Participation"
+            }
+        ],
+        "8": [
+            {
+                "competency_question": "What is the name of the event when a Policyowner requests information about the policy?",
+                "expected_answer": "Request for Information",
+                "key_entities": [
+                    "Policyowner",
+                    "Information Request"
+                ],
+                "odp_hint": "Event Reification"
+            },
+            {
+                "competency_question": "Who is the agent participant in a 'Request for Information' event?",
+                "expected_answer": "the Policyowner",
+                "key_entities": [
+                    "Policyowner"
+                ],
+                "odp_hint": "Participation"
+            },
+            {
+                "competency_question": "What information can be requested by the Policyowner?",
+                "expected_answer": "copy of the policy, premium payment history, beneficiary designations, and any applicable riders or endorsements",
+                "key_entities": [
+                    "Information Request"
+                ]
+            },
+            {
+                "competency_question": "What is the name of the event when a Policyowner elects or changes the method by which the Death Benefit is paid?",
+                "expected_answer": "Elect Settlement Options",
+                "key_entities": [
+                    "Policyowner",
+                    "Death Benefit"
+                ],
+                "odp_hint": "Event Reification"
+            },
+            {
+                "competency_question": "Who is the agent participant in an 'Elect Settlement Options' event?",
+                "expected_answer": "the Policyowner",
+                "key_entities": [
+                    "Policyowner"
+                ],
+                "odp_hint": "Participation"
+            },
+            {
+                "competency_question": "What is the object participant in an 'Elect Settlement Options' event?",
+                "expected_answer": "the Death Benefit",
+                "key_entities": [
+                    "Death Benefit"
+                ],
+                "odp_hint": "Participation"
+            },
+            {
+                "competency_question": "What is the numeric value of the maximum portion of the Death Benefit that can be paid under the Accelerated Death Benefit Rider?",
+                "expected_answer": "50%",
+                "key_entities": [
+                    "Accelerated Death Benefit",
+                    "Death Benefit"
+                ],
+                "odp_hint": "Quantity"
+            },
+            {
+                "competency_question": "What is the duration for which a terminal illness must have a life expectancy to qualify for an Accelerated Death Benefit?",
+                "expected_answer": "12 months or less",
+                "key_entities": [
+                    "Terminal Illness",
+                    "Accelerated Death Benefit"
+                ],
+                "odp_hint": "Time Interval"
+            },
+            {
+                "competency_question": "What is the name of the event when a Policyowner submits a written request for an accelerated benefit?",
+                "expected_answer": "Submit Acceleration Request",
+                "key_entities": [
+                    "Policyowner",
+                    "Acceleration Request"
+                ],
+                "odp_hint": "Event Reification"
+            },
+            {
+                "competency_question": "Who is the agent participant in a 'Submit Acceleration Request' event?",
+                "expected_answer": "the Policyowner",
+                "key_entities": [
+                    "Policyowner"
+                ],
+                "odp_hint": "Participation"
+            },
+            {
+                "competency_question": "What is the required manner for initiating a 'Submit Acceleration Request' event?",
+                "expected_answer": "written request and provide medical documentation acceptable to the Company",
+                "key_entities": [
+                    "Acceleration Request",
+                    "Medical Documentation"
+                ],
+                "odp_hint": "Participation"
+            },
+            {
+                "competency_question": "What is the name of the event when an accelerated benefit payment affects policy values?",
+                "expected_answer": "Adjust Policy Values",
+                "key_entities": [
+                    "Policyowner",
+                    "Death Benefit",
+                    "Accelerated Benefit"
+                ],
+                "odp_hint": "Event Reification"
+            },
+            {
+                "competency_question": "What is the object participant in an 'Adjust Policy Values' event?",
+                "expected_answer": "the Death Benefit and any outstanding loans or liens on the policy",
+                "key_entities": [
+                    "Death Benefit",
+                    "Outstanding Loans"
+                ],
+                "odp_hint": "Participation"
+            }
+        ],
+        "9": [
+            {
+                "competency_question": "What is the name of the event when accelerated benefits are not paid due to terminal illness caused by intentional self-inflicted injury?",
+                "expected_answer": "Exclusion Event",
+                "key_entities": [
+                    "terminal illness",
+                    "intentional self-inflicted injury"
+                ],
+                "odp_hint": "Event Reification"
+            },
+            {
+                "competency_question": "Who is the agent participant in an 'Exclusion Event' due to intentional self-inflicted injury?",
+                "expected_answer": "the Insured",
+                "key_entities": [
+                    "terminal illness",
+                    "intentional self-inflicted injury"
+                ],
+                "odp_hint": "Participation"
+            },
+            {
+                "competency_question": "What is the object participant in an 'Exclusion Event' due to intentional self-inflicted injury?",
+                "expected_answer": "the Policy",
+                "key_entities": [
+                    "terminal illness",
+                    "intentional self-inflicted injury"
+                ],
+                "odp_hint": "Participation"
+            },
+            {
+                "competency_question": "What is the name of the event when a policyowner revokes the request for accelerated benefits?",
+                "expected_answer": "Revocation Event",
+                "key_entities": [
+                    "Policyowner",
+                    "accelerated benefits"
+                ],
+                "odp_hint": "Event Reification"
+            },
+            {
+                "competency_question": "Who is the agent participant in a 'Revocation Event'?",
+                "expected_answer": "the Policyowner",
+                "key_entities": [
+                    "Policyowner",
+                    "accelerated benefits"
+                ],
+                "odp_hint": "Participation"
+            },
+            {
+                "competency_question": "What is the object participant in a 'Revocation Event'?",
+                "expected_answer": "the Request for Accelerated Benefits",
+                "key_entities": [
+                    "Policyowner",
+                    "accelerated benefits"
+                ],
+                "odp_hint": "Participation"
+            },
+            {
+                "competency_question": "What is the required manner for initiating a 'Revocation Event'?",
+                "expected_answer": "written notice to the Company",
+                "key_entities": [
+                    "Policyowner",
+                    "accelerated benefits"
+                ],
+                "odp_hint": "Participation"
+            },
+            {
+                "competency_question": "Where is this policy executed by Sentinel Life Assurance Company?",
+                "expected_answer": "at its Home Office in Hartford, Connecticut",
+                "key_entities": [
+                    "Sentinel Life Assurance Company",
+                    "policy execution"
+                ],
+                "odp_hint": "Situation"
+            },
+            {
+                "competency_question": "What event marks the beginning of when this policy becomes effective?",
+                "expected_answer": "the date shown in the Schedule of Benefits, provided the first premium has been paid and the Insured is living on that date",
+                "key_entities": [
+                    "policy effectiveness",
+                    "Schedule of Benefits"
+                ],
+                "odp_hint": "Time Interval"
+            },
+            {
+                "competency_question": "What is the policy form number?",
+                "expected_answer": "SLAC-TL2025-20YR",
+                "key_entities": [
+                    "Policy Form Number"
+                ]
+            }
+        ],
+        "10": [
+            {
+                "competency_question": "What is the name of the event when a fraudulent insurance act occurs?",
+                "expected_answer": "committing a fraudulent insurance act",
+                "key_entities": [
+                    "fraudulent insurance act"
+                ],
+                "odp_hint": "Event Reification"
+            },
+            {
+                "competency_question": "Who can commit a fraudulent insurance act?",
+                "expected_answer": "material thereto",
+                "key_entities": [
+                    "material",
+                    "fraudulent insurance act"
+                ],
+                "odp_hint": "Participation"
+            }
+        ]
+    }
+}
